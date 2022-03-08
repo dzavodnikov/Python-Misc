@@ -1,6 +1,5 @@
 from scipy import ndimage
 
-
 d1 = [1, 1, 5, 6, 9]
 h1 = ndimage.histogram(d1, 1, 10, 5)
 print(h1)

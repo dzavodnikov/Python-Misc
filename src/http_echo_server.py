@@ -1,12 +1,11 @@
-from http.server import SimpleHTTPRequestHandler
 import socketserver
+from http.server import SimpleHTTPRequestHandler
 
 
 SEPARATOR_LEN = 32
 
 
 class CustomRequestHandler(SimpleHTTPRequestHandler):
-
     def log_message(self, format, *args):
         pass
 
@@ -14,7 +13,7 @@ class CustomRequestHandler(SimpleHTTPRequestHandler):
         request_path = self.path
         request_headers = self.headers
 
-        print(f'GET {request_path}')
+        print(f"GET {request_path}")
         print("-" * SEPARATOR_LEN)
         print(request_headers)
 
@@ -26,14 +25,15 @@ class CustomRequestHandler(SimpleHTTPRequestHandler):
         request_path = self.path
         request_headers = self.headers
 
-        print(f'POST {request_path}')
+        print(f"POST {request_path}")
         print("-" * SEPARATOR_LEN)
         print(request_headers)
 
-        length_str = request_headers.get('Content-Length')
+        length_str = request_headers.get("Content-Length")
         length = int(length_str) if length_str else 0
         body = self.rfile.read(length) if length > 0 else None
-        if body: print(body)
+        if body:
+            print(body)
         print("=" * SEPARATOR_LEN)
 
         self.send_response(200)
@@ -41,7 +41,7 @@ class CustomRequestHandler(SimpleHTTPRequestHandler):
 
 def run(host, port):
     with socketserver.TCPServer((host, port), CustomRequestHandler) as httpd:
-        print(f'Listening on {host}:{port}')
+        print(f"Listening on {host}:{port}")
         print("=" * SEPARATOR_LEN)
         httpd.serve_forever()
 
