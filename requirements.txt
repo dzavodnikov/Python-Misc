@@ -1,3 +1,4 @@
 black
 scipy
-psycopg
+psycopg[binary]
+python-sql

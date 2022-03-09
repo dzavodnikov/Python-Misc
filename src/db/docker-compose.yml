@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: book_storage
+    ports:
+      - 5432:5432
+
+  cloudbeaver:
+    image: dbeaver/cloudbeaver:latest
+    ports:
+      - 8978:8978
+    depends_on:
+      - postgres
