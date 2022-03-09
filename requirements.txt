@@ -1,1 +1,3 @@
+black
 scipy
+psycopg
