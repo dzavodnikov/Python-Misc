@@ -1,4 +1,5 @@
 black
 scipy
-psycopg[binary]
-python-sql
+pandas
+matplotlib
+PyQt5

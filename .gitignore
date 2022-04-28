@@ -1,11 +1,27 @@
-# Ignore all dot-files and dot-folders.
-.*
+# Ignore add directories and files that starts from dot.
+**/.*
+
+# Not ignore Git-ignore.
+!.gitignore
+
+# Not ignore Docker-environment.
+!.env
+
+# Not ignore Docker-ingnore.
+!.dockerignore
+
+# Not ignore GitLab CI config.
+!.gitlab-ci.yml
 
 # Ignore log-files.
-**/*.log*
+*.log
 
-# Save gitignore.
-!/.gitignore
+# Ignore config-files.
+/*.yml
+
+# Ignore temporary data.
+**/temp
+**/tmp
 
 # Ignore Gradle build.
 build/
@@ -16,14 +32,17 @@ target/
 # Ignore Eclipse JDT (Java Development Tools) build.
 bin/
 
-# Save IDEA configuration.
-!/.idea
-
-# Ignore user-specific IDEA project configuration.
-.idea/workspace.xml
-
 # Ignore Python cache.
 **/__pycache__
+
+# Ignore Python virtual environments.
+**/env
+**/venv
+
+# Python setup.
+build/
+dist/
+*.egg-info
 
 # Ignore Python dynary files.
 **/*.pyc

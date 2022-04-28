@@ -6,9 +6,6 @@ SEPARATOR_LEN = 32
 
 
 class CustomRequestHandler(SimpleHTTPRequestHandler):
-    def log_message(self, format, *args):
-        pass
-
     def do_GET(self):
         request_path = self.path
         request_headers = self.headers
