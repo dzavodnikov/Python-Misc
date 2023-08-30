@@ -1,0 +1,20 @@
+# Ignore all dot-files and dot-folders.
+.*
+
+# Save gitignore.
+!/.gitignore
+
+# Saving Travis CI.
+!/.travis.yml
+
+# Ignore log-files.
+**/*.log*
+
+# Ignore temporal directories.
+**/tmp/
+
+# Ignore Python cache.
+**/__pycache__
+
+# Ignore Python dynary files.
+**/*.pyc
