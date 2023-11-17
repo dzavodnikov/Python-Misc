@@ -6,6 +6,13 @@ Uses Python 3.
 
 ## Scripts overview
 
+### [`utils.py`](scripts/utils.py)
+
+Contain utility methods:
+
+-   `repeat_if` repeat method call if exception happens;
+-   `check_if_url_available` open given URL and check if response is 200;
+
 ### [`dump_http_server.py`](scripts/dump_http_server.py)
 
 Server that dump all requests in console and save request headers (as `header.json`) and request bodies (as `body` file)
