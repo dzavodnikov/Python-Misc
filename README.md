@@ -16,6 +16,14 @@ Examples cURL queries:
     $ curl -X POST -F "data=@README.md" http://localhost:8001/file
 ```
 
+### [`proxy_get_http_server.py`](scripts/proxy_get_http_server.py)
+
+Proxy server for HTTP GET requests. You are provide `hostname:port/path` as a request parameters:
+
+```sh
+    $ curl http://localhost:8002/google.com:80/
+```
+
 ## License
 
 Distributed under MIT license.
