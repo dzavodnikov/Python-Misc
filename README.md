@@ -10,7 +10,9 @@ Uses Python 3.
 
 Contain utility methods:
 
--   `sizeof_fmt` print integer value in bytes in human-readable format.
+-   `sizeof_fmt` print integer value in bytes in human-readable format;
+-   `repeat_if` repeat method call if exception happens;
+-   `check_if_url_available` open given URL and check if response is 200.
 
 ### [`dump_http_server.py`](scripts/dump_http_server.py)
 
