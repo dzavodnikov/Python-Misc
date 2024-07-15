@@ -10,7 +10,9 @@ Uses Python 3.
 
 Contain utility methods:
 
--   `sizeof_fmt` return integer value in bytes in human-readable format.
+-   `sizeof_fmt` return integer value in bytes in human-readable format;
+-   `permissions_str` return string representation of octal of Unix permissions;
+-   `permissions_oct` return octal representation of string value of Unix permissions.
 
 ### [`dump_http_server.py`](scripts/dump_http_server.py)
 
