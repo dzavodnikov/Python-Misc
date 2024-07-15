@@ -12,7 +12,9 @@ Contain utility methods:
 
 -   `sizeof_fmt` return integer value in bytes in human-readable format;
 -   `permissions_str` return string representation of octal of Unix permissions;
--   `permissions_oct` return octal representation of string value of Unix permissions.
+-   `permissions_oct` return octal representation of string value of Unix permissions;
+-   `repeat_if` repeat method call if exception happens;
+-   `check_if_url_available` open given URL and check if response is 200.
 
 ### [`dump_http_server.py`](scripts/dump_http_server.py)
 
