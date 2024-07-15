@@ -4,6 +4,12 @@ This code can be used as a template for other Python projects.
 
 ## Scripts overview
 
+### [`utils.py`](scripts/utils.py)
+
+Contain utility methods:
+
+-   `sizeof_fmt` return integer value in bytes in human-readable format.
+
 ### [`dump_http_server.py`](scripts/dump_http_server.py)
 
 Server that dump all requests in console and save request headers (as `header.json`) and request bodies (as `body` file)
