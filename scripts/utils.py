@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
+import time
 import unittest
+from typing import Callable
 
 
 def sizeof_fmt(size_bytes: int) -> str:
@@ -92,6 +94,54 @@ class TestPermissions(unittest.TestCase):
         self.assertEqual(permissions_to_oct("rwxr-sr-x"), "2755")
         self.assertEqual(permissions_to_oct("rwsr-xr-x"), "4755")
         self.assertEqual(permissions_to_oct("rwsrwsrwt"), "7777")
+
+
+def repeat_if(
+    *exceptions: type[Exception],
+    max_request_repeat: int = 30,
+    repeat_sleep_sec: int = 10,
+    print_info: bool = True,
+):
+    def repeat_if_wrapper(func: Callable):
+        def wrapper(*args, **kwargs):
+            args_str = ",".join([f"{str(val)}" for val in args])
+            kwargs_str = ",".join([f"{key}={val}" for key, val in kwargs.items()])
+            fn_str = f'#{func.__name__}({",".join([val for val in [args_str, kwargs_str] if val])})'
+
+            happens = set()
+            for rep in range(max_request_repeat):
+                try:
+                    return func(*args, **kwargs)
+                except exceptions as e:
+                    step = rep + 1
+
+                    happens.add(str(e))
+
+                    if print_info:
+                        repeat = f"{step}/{max_request_repeat}"
+                        print(f"Waiting {repeat_sleep_sec} sec and repeat {repeat} for {fn_str}: {str(e)}")
+
+                    time.sleep(repeat_sleep_sec)
+            raise Exception(f'Fail with {fn_str}: {",".join(happens)}')
+
+        return wrapper
+
+    return repeat_if_wrapper
+
+
+class TestRepeatIf(unittest.TestCase):
+
+    def test_repeat_if(self):
+
+        @repeat_if(RuntimeWarning, max_request_repeat=3, repeat_sleep_sec=1)
+        def my_function(holder: list[int], max_calls: int) -> None:
+            holder[0] += 1
+            if holder[0] <= max_calls:
+                raise RuntimeWarning(f"Holder value {holder[0]} less than {max_calls}")
+
+        counter = [0]
+        my_function(counter, 2)
+        self.assertEqual(3, counter[0])
 
 
 if __name__ == "__main__":
